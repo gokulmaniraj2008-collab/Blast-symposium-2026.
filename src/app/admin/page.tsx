@@ -63,7 +63,7 @@ function PasswordGate({ onUnlock }: { onUnlock: (password: string) => void }) {
   };
 
   return (
-    <main className="starfield relative flex min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,#131a3d_0%,#05060f_65%)] px-6">
+    <main className="starfield relative flex min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,#201a44_0%,#0b0f2b_65%)] px-6">
       <form onSubmit={handleSubmit} className="telemetry-frame w-full max-w-sm rounded-2xl p-8 text-center">
         <p className="eyebrow mb-2">Restricted</p>
         <h1 className="font-display text-2xl text-chrome">Admin Access</h1>
@@ -502,11 +502,12 @@ function SettingsPanel({ password }: { password: string }) {
   );
 }
 
+
 function AdminDashboard({ password, onLock }: { password: string; onLock: () => void }) {
   const [tab, setTab] = useState<"registrations" | "settings">("registrations");
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,#131a3d_0%,#05060f_65%)] px-6 py-10">
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,#201a44_0%,#0b0f2b_65%)] px-6 py-10">
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
           <div>
