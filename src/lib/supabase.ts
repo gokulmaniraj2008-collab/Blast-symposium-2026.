@@ -10,6 +10,15 @@ export function supabaseConfigured() {
   return Boolean(SUPABASE_URL && SERVICE_ROLE_KEY);
 }
 
+// TEMPORARY DIAGNOSTIC — remove once the env var issue is confirmed fixed.
+// Reveals *which* variable is missing without ever exposing their values.
+export function supabaseDiagnostic() {
+  return {
+    SUPABASE_URL: SUPABASE_URL ? `present (${SUPABASE_URL.length} chars)` : "MISSING",
+    SUPABASE_SERVICE_ROLE_KEY: SERVICE_ROLE_KEY ? `present (${SERVICE_ROLE_KEY.length} chars)` : "MISSING",
+  };
+}
+
 export async function supabaseFetch(path: string, init: RequestInit = {}) {
   if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
     throw new Error(
