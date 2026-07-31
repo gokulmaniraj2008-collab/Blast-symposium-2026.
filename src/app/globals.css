@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:root {
+  --ink: #05060f;
+  --ink-2: #0d1230;
+  --ink-3: #131a3d;
+  --violet: #7b3fe4;
+  --violet-soft: #a680ff;
+  --chrome: #f3f1fb;
+  --gold: #e8b84b;
+  --cyan: #4fd1ff;
+  --cyan-deep: #7fe3ff;
+  --paper: #05060f;
+  --paper-2: #0d1230;
+  --mist: #c8c4e6;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-chrome: var(--chrome);
+  --color-gold: var(--gold);
+  --color-cyan: var(--cyan);
+  --color-cyan-deep: var(--cyan-deep);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-mist: var(--mist);
+}
+
+body {
+  background: var(--paper);
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.font-mono {
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.helix-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--violet) 15%,
+    var(--cyan) 50%,
+    var(--violet) 85%,
+    transparent 100%
+  );
+  opacity: 0.5;
+}
+
+.helix-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cyan);
+  box-shadow: 0 0 12px 2px var(--cyan);
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 6px var(--violet-soft));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px var(--cyan));
+  }
+}
+
+.glow-pulse {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.starfield {
+  background-image: radial-gradient(1px 1px at 20px 30px, #ffffff66, transparent),
+    radial-gradient(1px 1px at 90px 80px, #ffffff33, transparent),
+    radial-gradient(1.5px 1.5px at 140px 20px, #4fd1ff55, transparent),
+    radial-gradient(1px 1px at 200px 120px, #ffffff33, transparent),
+    radial-gradient(1.5px 1.5px at 250px 60px, #a680ff55, transparent);
+  background-repeat: repeat;
+  background-size: 280px 200px;
+}
+
+.eyebrow {
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--cyan-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-pulse {
+    animation: none;
+  }
+}
+
+/* Signature element: mission-control launch countdown */
+.telemetry-frame {
+  position: relative;
+  border: 1px solid rgba(79, 209, 255, 0.25);
+  background: linear-gradient(180deg, rgba(123, 63, 228, 0.12), rgba(255, 255, 255, 0.03));
+}
+
+.telemetry-frame::before,
+.telemetry-frame::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--cyan);
+  opacity: 0.7;
+}
+
+.telemetry-frame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.telemetry-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+.telemetry-digit {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.blink {
+  animation: blink-caret 1.6s steps(1) infinite;
+}
+
+/* Sponsor marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Mobile nav */
+.mobile-nav {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.mobile-nav.is-open {
+  grid-template-rows: 1fr;
+}
+
+.mobile-nav > div {
+  overflow: hidden;
+}
+
+/* Consistent keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+  }
