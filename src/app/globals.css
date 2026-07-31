@@ -11,22 +11,35 @@ html {
 }
 
 /* ---------------------------------------------------------
-   BLAST Symposium 2026 — "Plum & Milk" palette
-   plum      #381932  deep aubergine — primary dark ground
-   plum-2    #4a2242  lifted plum — secondary panels/cards
-   plum-deep #1c0a17  near-black plum — footer, deep shadow
-   milk      #fff3e6  warm cream — primary light ground / ink-on-dark
-   rose      #c77b94  dusty rose — links, borders, quiet accents
-   amber     #d6a24c  warm gold — calls to action, prestige accents
+   BLAST Symposium 2026 — "Vice City" palette
+   Source colors (exact, from user's palette):
+     sunset-pink  #FF5CA8
+     vice-cyan    #00F0FF
+     neon-purple  #BC6CFF
+     miami-peach  #FFB86B
+     ocean-night  #0B0F2B
+   Vice City only supplies one dark tone, so plum/plum-2 below
+   are computed blends of ocean-night + neon-purple (80/20 and
+   65/35), not new invented colors — noted for transparency.
+   plum      #2e2255  ocean-night + neon-purple blend — primary dark ground
+   plum-2    #493075  lighter ocean-night + neon-purple blend — panels/cards
+   plum-deep #0b0f2b  ocean-night (exact) — footer, deepest shadow
+   milk      #ffffff  pure white — primary light ground / ink-on-dark
+   rose      #ff5ca8  sunset-pink (exact) — links, borders, accents
+   amber     #ffb86b  miami-peach (exact) — CTAs, prestige accents
+   cyan      #00f0ff  vice-cyan (exact) — glow/neon highlight accent
+   purple    #bc6cff  neon-purple (exact) — secondary accent
 --------------------------------------------------------- */
 
 :root {
-  --plum: #381932;
-  --plum-2: #4a2242;
-  --plum-deep: #1c0a17;
-  --milk: #fff3e6;
-  --rose: #c77b94;
-  --amber: #d6a24c;
+  --plum: #2e2255;
+  --plum-2: #493075;
+  --plum-deep: #0b0f2b;
+  --milk: #ffffff;
+  --rose: #ff5ca8;
+  --amber: #ffb86b;
+  --cyan: #00f0ff;
+  --purple: #bc6cff;
 }
 
 @theme inline {
@@ -36,6 +49,8 @@ html {
   --color-milk: var(--milk);
   --color-rose: var(--rose);
   --color-amber: var(--amber);
+  --color-cyan: var(--cyan);
+  --color-purple: var(--purple);
 }
 
 body {
@@ -92,18 +107,18 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: var(--amber);
-  box-shadow: 0 0 10px 1px rgba(214, 162, 76, 0.6);
+  background: var(--cyan);
+  box-shadow: 0 0 10px 1px rgba(0, 240, 255, 0.6);
 }
 
 @keyframes pulse-glow {
   0%, 100% {
     opacity: 0.5;
-    filter: drop-shadow(0 0 4px rgba(199, 123, 148, 0.5));
+    filter: drop-shadow(0 0 4px rgba(255, 92, 168, 0.5));
   }
   50% {
     opacity: 1;
-    filter: drop-shadow(0 0 12px rgba(214, 162, 76, 0.6));
+    filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.6));
   }
 }
 
@@ -120,8 +135,8 @@ body {
 /* Signature element: specimen-slide countdown frame */
 .telemetry-frame {
   position: relative;
-  border: 1px solid rgba(214, 162, 76, 0.3);
-  background: linear-gradient(180deg, rgba(199, 123, 148, 0.14), rgba(255, 243, 230, 0.03));
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: linear-gradient(180deg, rgba(255, 92, 168, 0.14), rgba(255, 255, 255, 0.03));
 }
 
 .telemetry-frame::before,
@@ -130,7 +145,7 @@ body {
   position: absolute;
   width: 14px;
   height: 14px;
-  border-color: var(--amber);
+  border-color: var(--cyan);
   opacity: 0.75;
 }
 
@@ -201,8 +216,8 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--cyan);
   outline-offset: 2px;
   border-radius: 4px;
   }
-  
+
