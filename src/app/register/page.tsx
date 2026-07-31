@@ -137,7 +137,7 @@ export default function RegisterPage() {
 
   if (submitted) {
     return (
-      <main className="starfield relative flex min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,#201a44_0%,#0b0f2b_65%)] px-6 py-20">
+      <main className="starfield relative flex min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,#2c1454_0%,#0a0518_65%)] px-6 py-20">
         <div className="telemetry-frame relative mx-auto max-w-lg rounded-2xl p-10 text-center">
           <p className="eyebrow mb-3">Confirmation</p>
           <h1 className="font-display text-3xl text-chrome sm:text-4xl">You&apos;re on the manifest.</h1>
@@ -174,7 +174,7 @@ export default function RegisterPage() {
 
   if (!settings.registrations_open) {
     return (
-      <main className="starfield relative flex min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,#201a44_0%,#0b0f2b_65%)] px-6 py-20">
+      <main className="starfield relative flex min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,#2c1454_0%,#0a0518_65%)] px-6 py-20">
         <div className="telemetry-frame relative mx-auto max-w-lg rounded-2xl p-10 text-center">
           <p className="eyebrow mb-3">Registration</p>
           <h1 className="font-display text-3xl text-chrome sm:text-4xl">Registrations are closed</h1>
@@ -197,8 +197,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="starfield relative min-h-screen bg-[radial-gradient(ellipse_at_top,#201a44_0%,#0b0f2b_65%)] px-6 pb-24 pt-10">
-      <div className="mx-auto flex max-w-6xl items-center justify-between pb-10">
+    <main className="starfield relative min-h-screen overflow-hidden bg-[radial-gradient(ellipse_at_top,#2c1454_0%,#0a0518_65%)] px-6 pb-24 pt-10">
+      <div className="nebula-blob left-[-10%] top-[5%] h-72 w-72 bg-violet/20" />
+      <div className="nebula-blob right-[-8%] top-[40%] h-64 w-64 bg-pink/20" style={{ animationDelay: "4s" }} />
+      <div className="relative mx-auto flex max-w-6xl items-center justify-between pb-10">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/images/rvs-logo.png" alt="RVS ITECH logo" width={36} height={36} className="rounded bg-white p-0.5" />
           <span className="font-display text-sm text-chrome">RVS ITECH &middot; CSE Department</span>
@@ -448,5 +450,4 @@ export default function RegisterPage() {
     </main>
   );
 }
-
-      
+  
