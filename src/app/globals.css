@@ -10,45 +10,43 @@ html {
   }
 }
 
+/* ---------------------------------------------------------
+   BLAST Symposium 2026 — "Plum & Milk" palette
+   plum      #381932  deep aubergine — primary dark ground
+   plum-2    #4a2242  lifted plum — secondary panels/cards
+   plum-deep #1c0a17  near-black plum — footer, deep shadow
+   milk      #fff3e6  warm cream — primary light ground / ink-on-dark
+   rose      #c77b94  dusty rose — links, borders, quiet accents
+   amber     #d6a24c  warm gold — calls to action, prestige accents
+--------------------------------------------------------- */
+
 :root {
-  --ink: #05060f;
-  --ink-2: #0d1230;
-  --ink-3: #131a3d;
-  --violet: #7b3fe4;
-  --violet-soft: #a680ff;
-  --chrome: #f3f1fb;
-  --gold: #e8b84b;
-  --cyan: #4fd1ff;
-  --cyan-deep: #7fe3ff;
-  --paper: #05060f;
-  --paper-2: #0d1230;
-  --mist: #c8c4e6;
+  --plum: #381932;
+  --plum-2: #4a2242;
+  --plum-deep: #1c0a17;
+  --milk: #fff3e6;
+  --rose: #c77b94;
+  --amber: #d6a24c;
 }
 
 @theme inline {
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-ink-3: var(--ink-3);
-  --color-violet: var(--violet);
-  --color-violet-soft: var(--violet-soft);
-  --color-chrome: var(--chrome);
-  --color-gold: var(--gold);
-  --color-cyan: var(--cyan);
-  --color-cyan-deep: var(--cyan-deep);
-  --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
-  --color-mist: var(--mist);
+  --color-plum: var(--plum);
+  --color-plum-2: var(--plum-2);
+  --color-plum-deep: var(--plum-deep);
+  --color-milk: var(--milk);
+  --color-rose: var(--rose);
+  --color-amber: var(--amber);
 }
 
 body {
-  background: var(--paper);
+  background: var(--plum);
   font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
 }
 
 .font-display {
   font-family: var(--font-display), Georgia, serif;
-  font-weight: 700;
-  letter-spacing: 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .font-mono {
@@ -56,6 +54,22 @@ body {
   letter-spacing: 0.08em;
 }
 
+/* Eyebrow labels — rose by default (dark grounds), dark variant for milk grounds */
+.eyebrow {
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--rose);
+}
+
+.eyebrow-dark {
+  color: var(--plum);
+  opacity: 0.65;
+}
+
+/* Signature element: helix motif, recolored for biotech content on a plum ground */
 .helix-spine {
   position: absolute;
   top: 0;
@@ -65,12 +79,12 @@ body {
   background: linear-gradient(
     180deg,
     transparent 0%,
-    var(--violet) 15%,
-    var(--cyan) 50%,
-    var(--violet) 85%,
+    var(--rose) 15%,
+    var(--amber) 50%,
+    var(--rose) 85%,
     transparent 100%
   );
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
 .helix-node {
@@ -78,42 +92,23 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: var(--cyan);
-  box-shadow: 0 0 12px 2px var(--cyan);
+  background: var(--amber);
+  box-shadow: 0 0 10px 1px rgba(214, 162, 76, 0.6);
 }
 
 @keyframes pulse-glow {
   0%, 100% {
-    opacity: 0.55;
-    filter: drop-shadow(0 0 6px var(--violet-soft));
+    opacity: 0.5;
+    filter: drop-shadow(0 0 4px rgba(199, 123, 148, 0.5));
   }
   50% {
     opacity: 1;
-    filter: drop-shadow(0 0 16px var(--cyan));
+    filter: drop-shadow(0 0 12px rgba(214, 162, 76, 0.6));
   }
 }
 
 .glow-pulse {
   animation: pulse-glow 4s ease-in-out infinite;
-}
-
-.starfield {
-  background-image: radial-gradient(1px 1px at 20px 30px, #ffffff66, transparent),
-    radial-gradient(1px 1px at 90px 80px, #ffffff33, transparent),
-    radial-gradient(1.5px 1.5px at 140px 20px, #4fd1ff55, transparent),
-    radial-gradient(1px 1px at 200px 120px, #ffffff33, transparent),
-    radial-gradient(1.5px 1.5px at 250px 60px, #a680ff55, transparent);
-  background-repeat: repeat;
-  background-size: 280px 200px;
-}
-
-.eyebrow {
-  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  color: var(--cyan-deep);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -122,11 +117,11 @@ body {
   }
 }
 
-/* Signature element: mission-control launch countdown */
+/* Signature element: specimen-slide countdown frame */
 .telemetry-frame {
   position: relative;
-  border: 1px solid rgba(79, 209, 255, 0.25);
-  background: linear-gradient(180deg, rgba(123, 63, 228, 0.12), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(214, 162, 76, 0.3);
+  background: linear-gradient(180deg, rgba(199, 123, 148, 0.14), rgba(255, 243, 230, 0.03));
 }
 
 .telemetry-frame::before,
@@ -135,8 +130,8 @@ body {
   position: absolute;
   width: 14px;
   height: 14px;
-  border-color: var(--cyan);
-  opacity: 0.7;
+  border-color: var(--amber);
+  opacity: 0.75;
 }
 
 .telemetry-frame::before {
@@ -206,7 +201,8 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--cyan);
+  outline: 2px solid var(--amber);
   outline-offset: 2px;
   border-radius: 4px;
   }
+  
