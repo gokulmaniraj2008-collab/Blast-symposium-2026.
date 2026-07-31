@@ -32,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#381932] text-[#fff3e6]">
+      <body className="min-h-full flex flex-col bg-[#0b0f2b] text-white">
         {children}
         <ChatWidget />
       </body>
