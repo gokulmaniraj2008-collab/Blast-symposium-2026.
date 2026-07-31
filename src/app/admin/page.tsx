@@ -63,8 +63,10 @@ function PasswordGate({ onUnlock }: { onUnlock: (password: string) => void }) {
   };
 
   return (
-    <main className="starfield relative flex min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,#201a44_0%,#0b0f2b_65%)] px-6">
-      <form onSubmit={handleSubmit} className="telemetry-frame w-full max-w-sm rounded-2xl p-8 text-center">
+    <main className="starfield relative flex min-h-screen items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_top,#2c1454_0%,#0a0518_65%)] px-6">
+      <div className="nebula-blob left-[-15%] top-[15%] h-72 w-72 bg-violet/25" />
+      <div className="nebula-blob right-[-15%] bottom-[10%] h-72 w-72 bg-cyan/15" style={{ animationDelay: "5s" }} />
+      <form onSubmit={handleSubmit} className="telemetry-frame relative w-full max-w-sm rounded-2xl p-8 text-center">
         <p className="eyebrow mb-2">Restricted</p>
         <h1 className="font-display text-2xl text-chrome">Admin Access</h1>
         <p className="mt-2 text-sm text-mist/70">Enter the admin password to continue.</p>
@@ -502,12 +504,11 @@ function SettingsPanel({ password }: { password: string }) {
   );
 }
 
-
 function AdminDashboard({ password, onLock }: { password: string; onLock: () => void }) {
   const [tab, setTab] = useState<"registrations" | "settings">("registrations");
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,#201a44_0%,#0b0f2b_65%)] px-6 py-10">
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,#2c1454_0%,#0a0518_65%)] px-6 py-10">
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
           <div>
