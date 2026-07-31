@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:root {
+  /* Nebula-led purple-black base, accented with Vice City neons */
+  --ink: #0a0518;
+  --ink-2: #170c30;
+  --ink-3: #2c1454;
+  --violet: #bc6cff;
+  --violet-soft: #d8aeff;
+  --chrome: #fbeef8;
+  --gold: #ffb86b;
+  --cyan: #00f0ff;
+  --cyan-deep: #7fe3ff;
+  --pink: #ff5ca8;
+  --paper: #0a0518;
+  --paper-2: #170c30;
+  --mist: #dcc3ea;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-chrome: var(--chrome);
+  --color-gold: var(--gold);
+  --color-cyan: var(--cyan);
+  --color-cyan-deep: var(--cyan-deep);
+  --color-pink: var(--pink);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-mist: var(--mist);
+}
+
+body {
+  background: var(--paper);
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.font-mono {
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.helix-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--violet) 15%,
+    var(--cyan) 50%,
+    var(--violet) 85%,
+    transparent 100%
+  );
+  opacity: 0.5;
+}
+
+.helix-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cyan);
+  box-shadow: 0 0 12px 2px var(--cyan);
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 6px var(--violet-soft));
+  }
+  33% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px var(--pink));
+  }
+  66% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px var(--cyan));
+  }
+}
+
+.glow-pulse {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.starfield {
+  background-image: radial-gradient(1px 1px at 20px 30px, #ffffff66, transparent),
+    radial-gradient(1px 1px at 90px 80px, #ffffff33, transparent),
+    radial-gradient(1.5px 1.5px at 140px 20px, #00f0ff55, transparent),
+    radial-gradient(1px 1px at 200px 120px, #ffffff33, transparent),
+    radial-gradient(1.5px 1.5px at 250px 60px, #ff5ca855, transparent);
+  background-repeat: repeat;
+  background-size: 280px 200px;
+  animation: starfield-drift 60s linear infinite;
+}
+
+@keyframes starfield-drift {
+  from { background-position: 0 0; }
+  to { background-position: -280px 200px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield {
+    animation: none;
+  }
+}
+
+/* Nebula blobs: soft, slow-drifting color clouds for an "alive" background */
+.nebula-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+  animation: nebula-drift 16s ease-in-out infinite;
+}
+
+@keyframes nebula-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6%, -8%) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nebula-blob {
+    animation: none;
+  }
+}
+
+/* Animated gradient text: slowly cycles across the neon palette */
+.gradient-text-flow {
+  background: linear-gradient(90deg, var(--pink), var(--violet-soft), var(--cyan), var(--violet-soft), var(--pink));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-flow 7s linear infinite;
+}
+
+@keyframes gradient-flow {
+  to {
+    background-position: 300% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text-flow {
+    animation: none;
+    background-position: 0% center;
+  }
+}
+
+/* Gentle auto-floating for badges and cards */
+@keyframes float-y {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float-slow {
+  animation: float-y 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-slow {
+    animation: none;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--cyan-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-pulse {
+    animation: none;
+  }
+}
+
+/* Signature element: mission-control launch countdown */
+.telemetry-frame {
+  position: relative;
+  border: 1px solid rgba(79, 209, 255, 0.25);
+  background: linear-gradient(180deg, rgba(123, 63, 228, 0.12), rgba(255, 255, 255, 0.03));
+}
+
+.telemetry-frame::before,
+.telemetry-frame::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--cyan);
+  opacity: 0.7;
+}
+
+.telemetry-frame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.telemetry-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+.telemetry-digit {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.blink {
+  animation: blink-caret 1.6s steps(1) infinite;
+}
+
+/* Sponsor marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Mobile nav */
+.mobile-nav {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.mobile-nav.is-open {
+  grid-template-rows: 1fr;
+}
+
+.mobile-nav > div {
+  overflow: hidden;
+}
+
+/* Consistent keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+  }
